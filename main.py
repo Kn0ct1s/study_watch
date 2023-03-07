@@ -1,21 +1,36 @@
 import os
+from database_managment import DataBase
 from modules import check_files
+
+def intro() -> None:
+    """
+    # The purpose of this function is to provide an
+    # introduction to the program and tell the user how to
+    # set up a database
+    """
 
 if __name__ == "__main__":
     
     # this is the users name
     name = os.getlogin()
     
-    file = 'test.txt'
+    # this is the data base object
+    datab = DataBase()
     
-    file_status = check_files(file, 'database')
-    
-    if file_status == 0:
-        print(f"Welcome back {name} to Study Watch")
-    elif file_status == -1:
+    # welcome messages
+    if datab.status_code == 0:
+        print(f"Welcome to Study Watch {name}")
+    elif datab.status_code == 1:
+        print(f"Welcome back to Study Watch {name}")
+    elif datab.status_code == -1:
         print(
-            f"Database file is empty {name}.\n"
-            "This might mean a user/system error occured "
-            "please setup a new database:\n")
-    elif file_status == -2:
-        print(f"Welcome to study watch {name}")
+            f"{name} possible user/system error encountered\n"
+            "No data in database file.")
+        
+    # test variables for the db
+    name = 'N0ct1s'
+    time = 3
+    day = 'Monday'
+        
+    datab.insert_study_time(name, time, day)
+        

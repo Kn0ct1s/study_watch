@@ -47,7 +47,7 @@ def check_files(
             else:
                 # everything is ok 
                 # return 0 to indicate success
-                return 0
+                return 1
         except FileNotFoundError:
             # if the file does not exist make it
             with open(filepath, 'w') as f:
@@ -55,7 +55,7 @@ def check_files(
             
             # return -2
             # this indicates this is most likely a new user
-            return -2
+            return 0
 
     # try to open the main file
     try:
@@ -69,13 +69,14 @@ def check_files(
         # the file has data to read
         else:
             # return success
-            return 0
+            return 1
     except FileNotFoundError:
         # if they want it in a directory
         # make the file otherwise
         with open(file, 'w') as f:
             f.close()
         
-        # file is empty but not due to user/system error
-        return -2
+        # file is empty but means its most likly first run of the
+        # program
+        return 0
         
