@@ -26,9 +26,8 @@ if __name__ == "__main__":
         print(
             f"{name} possible user/system error encountered\n"
             "No data in database file.")
-        
-    # test variables for the db
-    name = 'N0ct1s'
+    
+    
     time = 3
     day = 'Monday'
         

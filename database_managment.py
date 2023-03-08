@@ -35,10 +35,11 @@ class DataBase:
         """
         # This class function creates a database with
         # the correct rows if their is no database to work with
+        # or if its the users first time opening the application
         """
         
         self.cursor.execute(
-            "CREATE TABLE study_times(user, time, day)"
+            "CREATE TABLE study_times(user, subject, time_h, day)"
         )
         
     def insert_study_time(
@@ -49,7 +50,8 @@ class DataBase:
         ):
         """
         # This function inserts the users name,
-        # how long they studied and what day it is
+        # how long they studied, what day it is (mon, tue)
+        # and what week of their studying it is
         # into the data base
         """
         # the data to insert

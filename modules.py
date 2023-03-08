@@ -79,4 +79,6 @@ def check_files(
         # file is empty but means its most likly first run of the
         # program
         return 0
-        
+
+def clear_screen() -> None:
+    
