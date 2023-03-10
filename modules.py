@@ -82,3 +82,7 @@ def check_files(
 
 def clear_screen() -> None:
     
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')

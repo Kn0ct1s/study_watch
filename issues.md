@@ -1,0 +1,1 @@
+doesnt check if the database has the required amount of collumes

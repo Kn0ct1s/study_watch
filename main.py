@@ -1,6 +1,6 @@
 import os
 from database_managment import DataBase
-from modules import check_files
+from time_reader import log_time
 
 def intro() -> None:
     """
@@ -26,10 +26,17 @@ if __name__ == "__main__":
         print(
             f"{name} possible user/system error encountered\n"
             "No data in database file.")
-    
-    
-    time = 3
-    day = 'Monday'
         
-    datab.insert_study_time(name, time, day)
+        
+    print("Type 'start' to start or 'quit' to quit ")
+    
+    ans = input("--> ").strip()
+    ans = ans.lower()
+
+    if ans == 'quit':
+        exit()
+    elif ans == 'start':
+        study_time = log_time()
+        datab.insert_study_time(name, "comp sci", study_time, 'monday')
+        
         

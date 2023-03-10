@@ -34,18 +34,20 @@ class DataBase:
     def _database_setup(self) -> None:
         """
         # This class function creates a database with
-        # the correct rows if their is no database to work with
+        # the correct rows if there is no database to work with
         # or if its the users first time opening the application
         """
         
         self.cursor.execute(
-            "CREATE TABLE study_times(user, subject, time_h, day)"
+            "CREATE TABLE study_times(user, subject, "
+            "time_h, time_m, time_s, day)"
         )
         
     def insert_study_time(
         self,
         username: str,
-        time: int,
+        subject: str,
+        study_time: dict,
         day: str,
         ):
         """
@@ -54,12 +56,19 @@ class DataBase:
         # and what week of their studying it is
         # into the data base
         """
+        
+        time_h = study_time['hours']
+        time_m = study_time['minutes']
+        time_s = round(study_time['seconds'], 2)
+        
         # the data to insert
-        data = [username, time, day]
+        data = [username, subject, time_h, time_m, time_s, day]
+        
+        
         
         self.cursor.execute("""
             INSERT INTO study_times VALUES
-            (?, ?, ?)
+            (?, ?, ?, ?, ?, ?)
         """, data)
         
         self.connection.commit()

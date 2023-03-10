@@ -22,7 +22,7 @@ def _convert_time(time_s) -> dict:
             
     return time
 
-def log_time() -> float:
+def log_time() -> dict:
     
     # when they started studying
     start_study = time.time()
@@ -41,11 +41,5 @@ def log_time() -> float:
     elap = end - start_study
     
     time_data = _convert_time(elap)
-    
-    print(time_data)
-    
 
-    
-# log_time()
-
-log_time()
+    return time_data    
