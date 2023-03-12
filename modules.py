@@ -11,17 +11,14 @@ def check_files(
     # This function takes a filename and an optional directory path
     # and checks if both the file and directory exist
     # 
-    # If they do it returns 0 for success this users is logging
-    # back on
-    # 
-    # If they do but the file is empty it returns -1
+    # if they do but the file is empty returns -1
     # indicating possible user/system error
-    # 
-    # If they dont exist it returns -2
+    #
+    # if they don't exist it returns 0 
     # indicating that they are new to the program
     """
     
-     # if they need a directory made
+    # if they need a directory made
     if dir_path != None:
         
         # new path for the file
@@ -53,7 +50,6 @@ def check_files(
             with open(filepath, 'w') as f:
                 f.close()
             
-            # return -2
             # this indicates this is most likely a new user
             return 0
 

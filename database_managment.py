@@ -4,26 +4,29 @@ from modules import check_files
 
 class DataBase:
     """
-    # This is the class that controls the database
-    # operations.
+    # This class controls all operations 
+    # relating to the database of the application
+    #
+    # It also has features that let other part of the program 
+    # know if there was an error with the database
     """
     
-    def __init__(
-        self,
-        filename='study_times.db',
-        directo='database',
-        ) -> None:
+    def __init__(self) -> None:
+        
+        # this is the path to the database
+        database_folder = 'database'
+        database_name = 'study_times.db'
         
         # full path to the database
-        full_path = directo + '/' + filename
+        database_path = database_folder + '/' + database_name
         
-        # this is the database being made and checked
-        self.status_code = check_files(filename, directo)
+        # this is a status code telling us information about
+        # the database
+        self.status_code = check_files(database_name, database_folder)
         
-        # the connection to the database
-        self.connection = sqlite3.connect(full_path)
+        # this establishes a connection to the database
+        self.connection = sqlite3.connect(database_path)
         
-        # cursor object
         self.cursor = self.connection.cursor()
         
         # check if we need to set up the database
