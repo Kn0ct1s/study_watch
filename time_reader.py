@@ -46,6 +46,7 @@ def log_time() -> dict:
         ans = input("Have you finished studying(y/n): --> ")
         ans = ans.strip().lower()
         
+        # if they are done studying
         if ans == 'y':
             break
         else:
@@ -56,6 +57,7 @@ def log_time() -> dict:
     # elapsed time
     elap = end - start_study
     
+    # convert the time data we got to my own format
     time_data = _convert_time(elap)
 
     return time_data    

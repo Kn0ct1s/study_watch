@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 
 from database_managment import DataBase
 from time_reader import log_time
@@ -47,10 +48,27 @@ if __name__ == "__main__":
         # get the amount of time they have been studying
         study_time = log_time()
         
-        # get the day name i.e monday 
-        day = time.strftime("%A", time.gmtime())
+        # date info about today        
+        today = time.localtime()
+        
+        # info relating to the day, week and year of the user 
+        # studied
+        date_info = {
+            'day': time.strftime("%A", today),
+            'week': time.strftime("%W", today),
+            'year': time.strftime("%Y", today),
+           
+        }
+        
+        # all the date to be written to the database
+        data = {
+            'username': name,
+            'subject': subject,
+            'study_time': study_time,
+            'date_info': date_info,
+            }
         
         # insert the data
-        datab.insert_study_time(name, subject, study_time, day)
+        datab.insert_study_time(data)
         
         
